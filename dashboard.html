@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Dashboard</title>
+<link rel="stylesheet" href="css/style.css"></head>
+<body>
+<h1>Dashboard — Chrisland Shopping Hub</h1>
+<div id="userInfo"></div>
+<button id="createProductBtn">Publish a product (seller only)</button>
+<div id="productForm" style="display:none;">
+  <input id="productTitle" placeholder="Title"><br>
+  <textarea id="productDesc" placeholder="Description"></textarea><br>
+  <input id="productPrice" placeholder="Price"><br>
+  <input id="productImage" type="file"><br>
+  <button id="publishBtn">Publish</button>
+</div>
+
+<h2>Products</h2>
+<div id="productsList"></div>
+
+<script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
+6) shop.html
+Copy code
+Html
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Shop</title>
+<link rel="stylesheet" href="css/style.css"></head>
+<body>
+<h1>Shop Now</h1>
+<div id="publicProducts"></div>
+
+<script type="module">
+import { db } from './js/firebase-config.js';
+import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+
+async function loadPublic() {
+  const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+  const snap = await getDocs(q);
+  const el = document.getElementById('publicProducts');
+  el.innerHTML = '';
+  snap.forEach(d => {
+    const p = d.data();
+    const card = document.createElement('div');
+    card.innerHTML = `<h3>${p.title}</h3>
+      <p>₦${p.price}</p>
+      ${p.imageUrl ? `<img src="${p.imageUrl}" width="180">` : ''}
+      <a href="auth.html">Sign in to buy</a>`;
+    el.appendChild(card);
+  });
+}
+loadPublic();
+</script>
+</body>
+</html>

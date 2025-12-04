@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Chrisland Shopping Hub — Sign up / Login</h1>
+
+<section id="signup-section">
+  <h2>Sign up</h2>
+  <input id="fullName" placeholder="Full name"><br>
+  <input id="username" placeholder="Username"><br>
+  <input id="email" placeholder="Email"><br>
+  <input id="password" type="password" placeholder="Password"><br>
+  <input id="phone" placeholder="WhatsApp phone (e.g. +234813...)"><br>
+  <select id="role">
+    <option value="buyer">Buyer</option>
+    <option value="seller">Seller</option>
+  </select><br>
+  <button id="signupBtn">Sign up</button>
+</section>
+
+<section id="login-section">
+  <h2>Login</h2>
+  <input id="loginEmail" placeholder="Email"><br>
+  <input id="loginPassword" type="password" placeholder="Password"><br>
+  <button id="loginBtn">Login</button>
+  <p><a href="#" id="forgotLink">Forgot password?</a></p>
+</section>
+
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>

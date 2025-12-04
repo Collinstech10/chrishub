@@ -1,0 +1,5 @@
+.body { font-family: Arial, sans-serif; padding: 20px; }
+.product-card { border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; }
+input, textarea, select { display:block; margin:6px 0; padding:6px; width:300px; }
+button { padding:8px 12px; }
+
